@@ -17,20 +17,22 @@ Step 1: Get the source from git.
 
 Step 2:Add Apche Tomcat Server in Netbean
 
-Step 3:Import mySQL database in file Bookstore.sql
+Step 3:Import mySQL database in file shopbanhang.sql
 
-Step 4:Open project with netbean
+Step 4:Import data to database Bookstore by import file DataB.sql
 
-Step 5:Add libraries mysql-connector-java-8.x.jar
+Step 5:Open project with netbean
 
-Step 6:Open folder DBCLPM\src\java\dao\utils\ConDB
+Step 6:Add libraries mysql-connector-java-8.x.jar
 
-Step 7:Replace 
+Step 7:Open folder DBCLPM\src\java\dao\utils\ConDB
+
+Step 8:Replace 
         "final String username = "root";
         final String password = "mikumiku123";"
         to username and password in Mysql Server
       
-Step 8:Run project and enjoy our Web =))
+Step 9:Run project and enjoy our Web =))
 
 ## Authors
 * **Nhom10** - *DBCLPM nhom 4*
