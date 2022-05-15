@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bookstore
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,54 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `account`
---
-
-DROP TABLE IF EXISTS `account`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `account` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `UserID` int NOT NULL,
-  `Username` varchar(255) DEFAULT NULL,
-  `Password` varchar(255) DEFAULT NULL,
-  `Role` tinyint DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `FKAccount182293` (`UserID`),
-  CONSTRAINT `FKAccount182293` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `account`
 --
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (4,6,'minhthpanda','6743F69368727D77300D00E0485D2295A8C64B304C65E0602AA8CFDAEEDA9335',0),(5,7,'minhth','6743F69368727D77300D00E0485D2295A8C64B304C65E0602AA8CFDAEEDA9335',1);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `address`
---
-
-DROP TABLE IF EXISTS `address`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `address` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `UserID` int NOT NULL,
-  `City` varchar(255) DEFAULT NULL,
-  `District` varchar(255) DEFAULT NULL,
-  `addressDetail` varchar(255) DEFAULT NULL,
-  `shipmentCityId` varchar(10) DEFAULT NULL,
-  `shipmentDistrictId` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKAddress555440` (`UserID`),
-  CONSTRAINT `FKAddress555440` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `address`
@@ -71,26 +30,8 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (5,6,'Hà Nội','Quận Nam Từ Liêm',NULL,'201','3440'),(6,7,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `author`
---
-
-DROP TABLE IF EXISTS `author`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `author` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(255) DEFAULT NULL,
-  `Biography` varchar(255) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `Address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `author`
@@ -103,31 +44,6 @@ INSERT INTO `author` VALUES (1,'Aso Shuichi','Tác giả với nhiều tác ph�
 UNLOCK TABLES;
 
 --
--- Table structure for table `book`
---
-
-DROP TABLE IF EXISTS `book`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `book` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `BookItemID` int NOT NULL,
-  `IBSN` varchar(255) DEFAULT NULL,
-  `Tittle` mediumtext,
-  `Sumary` longtext,
-  `PublicationYear` varchar(255) DEFAULT NULL,
-  `NumberOfPage` int NOT NULL,
-  `Cost` float NOT NULL,
-  `Language` varchar(255) DEFAULT NULL,
-  `RemainingQuantity` int NOT NULL,
-  `Status` tinyint DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKBook313834` (`BookItemID`),
-  CONSTRAINT `FKBook313834` FOREIGN KEY (`BookItemID`) REFERENCES `bookitem` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `book`
 --
 
@@ -136,23 +52,6 @@ LOCK TABLES `book` WRITE;
 INSERT INTO `book` VALUES (1,1,'0306406','Kẻ Siêu Năng Khốn Khổ','Saiki Kusuo là một nhà ngoại cảm bẩm sinh. Nhưng khác với những người khác vui mừng vì có được sức mạnh siêu nhiên, Kusuo lại coi đó như sự bất hạnh nhất thế giới, và cố gắng sống bình thường mặc cho cái sức mạnh phiền nhiễu này','2015',120,15000,'Việt Nam',50,1),(2,2,'0306422','Pokémon Đặc Biệt','Trong thế giới này, những sinh vật sống với khả năng siêu nhiên - Pokemon. Mọi người, được gọi là Nhà huấn luyện Pokemon, huấn luyện Pokemon chiến đấu với Pokemon của các huấn luyện viên khác: ở một mức độ nhất định, các trận chiến Pokemon giống với các c','2016',120,20000,'Việt Nam',50,1),(3,3,'0394844','Khéo Ăn Nói Sẽ Có Được Thiên Hạ','Một trong những kĩ năng quan trọng nhất mà con người cần có trong cuộc sống là giao tiếp. Giao tiếp giúp bạn vận hành tối đa ưu điểm của mình, tiếp thu được nhiều kiến thức, bài học sống từ người xung quanh. Dù bạn có là người hướng nội hay người hướng ng','2017',100,60000,'Việt Nam',50,1),(4,4,'0348515','Hướng dẫn nấu 200 món ăn truyền thống','Cuốn sách đưa 200 công thức nấu ăn truyền thống giúp bạn thỏa sức tìm tòi khám phá những món ăn truyền thống thời xưa','2018',100,40000,'Việt Nam',100,1),(5,5,'0364101','Tắt đèn','Câu chuyện kể về cuộc sống đen tối của chị Dậu nói riêng và của nông dân Việt Nam thời xưa nói chung trước sự bóc lột của bọn thực dân Pháp thối nát ','2019',120,50000,'Việt Nam',50,1),(6,6,'0305884','Dumbo','Một đàn cò mang những em bé bay ngang qua đoàn xiếc thú đang được vận chuyển bằng tàu lửa đến từ \"Winter Quarters\".Bà voi Jumbo, một trong những con voi trong đoàn xiếc, nhận được con của mình là chú voi con luôn bị chọc ghẹo bởi những cô voi khác vì đôi ','2020',50,100000,'Việt Nam',100,1),(7,7,'0305442','The Green Mile','Câu chuyện là hồi ký của Paul Edgecombe, cựu cai ngục ở khu E, hay còn gọi là Green Mile – Dặm Xanh, khu dành cho các tử tù. Vào những năm 1930, khi còn đang làm việc ở Green Mile, ông đã tiếp nhận John Coffey (tên giống một loại đồ uống nhưng đánh vần kh','1998',300,180000,'Việt Nam',50,1),(8,8,'0311584','Phương Pháp Giải Bài Tập Hoá Học 10','Tuyển tập những phương pháp giải những bài tập Hóa học của lớp 10','2015',100,60000,'Việt Nam',100,1),(9,9,'0315484','Nhật Ký Chú Bé Nhút Nhát','Nội dung chủ yếu kể về cuộc sống xoay quanh cậu bé nhân vật chính Greg Heffley cùng những cảm xúc của cậu','2016',120,50000,'Việt Nam',100,1),(10,10,'0374878','Thỏ Bảy Màu Và Những Người Nghĩ Nó Là Bạn','Nội dung? Bạn nghĩ những câu chuyện mất não của thỏ bày màu này có nội dung à.Hãy cùng khám phá những câu chuyện tấu hài trong thế giới mất não này của thỏ bảy màu','2020',150,80000,'Việt Nam',100,1);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `bookauthor`
---
-
-DROP TABLE IF EXISTS `bookauthor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bookauthor` (
-  `BookID` int NOT NULL,
-  `AuthorID` int NOT NULL,
-  PRIMARY KEY (`BookID`,`AuthorID`),
-  KEY `FKBookAuthor144512` (`AuthorID`),
-  CONSTRAINT `FKBookAuthor126018` FOREIGN KEY (`BookID`) REFERENCES `book` (`ID`) ON DELETE CASCADE,
-  CONSTRAINT `FKBookAuthor144512` FOREIGN KEY (`AuthorID`) REFERENCES `author` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `bookauthor`
@@ -165,26 +64,6 @@ INSERT INTO `bookauthor` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),
 UNLOCK TABLES;
 
 --
--- Table structure for table `bookitem`
---
-
-DROP TABLE IF EXISTS `bookitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bookitem` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Price` float NOT NULL,
-  `Discount` float NOT NULL DEFAULT '0',
-  `SellingStatus` int DEFAULT '0',
-  `Description` longtext,
-  `Image` varchar(255) DEFAULT NULL,
-  `Name` mediumtext,
-  `Category` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `bookitem`
 --
 
@@ -195,51 +74,13 @@ INSERT INTO `bookitem` VALUES (1,20000,5,10,'Saiki Kusuo là một nhà ngoại 
 UNLOCK TABLES;
 
 --
--- Table structure for table `cart`
---
-
-DROP TABLE IF EXISTS `cart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `UserID` int NOT NULL,
-  `TotalPrice` float DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKCart424327` (`UserID`),
-  CONSTRAINT `FKCart424327` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `cart`
 --
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (5,6,NULL),(6,7,NULL);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `cartitem`
---
-
-DROP TABLE IF EXISTS `cartitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cartitem` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Quantity` int NOT NULL,
-  `BookItemID` int NOT NULL,
-  `CartID` int NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `CartItem` (`BookItemID`),
-  KEY `CartItem2` (`CartID`),
-  CONSTRAINT `CartItem` FOREIGN KEY (`BookItemID`) REFERENCES `bookitem` (`ID`),
-  CONSTRAINT `CartItem2` FOREIGN KEY (`CartID`) REFERENCES `cart` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `cartitem`
@@ -247,23 +88,8 @@ CREATE TABLE `cartitem` (
 
 LOCK TABLES `cartitem` WRITE;
 /*!40000 ALTER TABLE `cartitem` DISABLE KEYS */;
-INSERT INTO `cartitem` VALUES (20,1,9,5);
 /*!40000 ALTER TABLE `cartitem` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `customer`
---
-
-DROP TABLE IF EXISTS `customer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `customer` (
-  `UserID` int NOT NULL,
-  PRIMARY KEY (`UserID`),
-  CONSTRAINT `FKCustomer697196` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `customer`
@@ -275,57 +101,13 @@ LOCK TABLES `customer` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `fullname`
---
-
-DROP TABLE IF EXISTS `fullname`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fullname` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `UserID` int NOT NULL,
-  `FirstName` varchar(255) DEFAULT NULL,
-  `MidName` varchar(255) DEFAULT NULL,
-  `LastName` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKFullName19388` (`UserID`),
-  CONSTRAINT `FKFullName19388` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `fullname`
 --
 
 LOCK TABLES `fullname` WRITE;
 /*!40000 ALTER TABLE `fullname` DISABLE KEYS */;
-INSERT INTO `fullname` VALUES (5,6,'minh',NULL,NULL),(6,7,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `fullname` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `CustomerUserID` int NOT NULL,
-  `ShipmentID` int NOT NULL,
-  `CreatedDate` timestamp(6) NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `Status` int DEFAULT '0',
-  `PaymentID` int NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKOrder751924` (`ShipmentID`),
-  KEY `FKOrder321061_idx` (`CustomerUserID`),
-  KEY `FKOrder92191` (`PaymentID`),
-  CONSTRAINT `FKOrder321061` FOREIGN KEY (`CustomerUserID`) REFERENCES `user` (`ID`),
-  CONSTRAINT `FKOrder751924` FOREIGN KEY (`ShipmentID`) REFERENCES `shipment` (`ID`),
-  CONSTRAINT `FKOrder92191` FOREIGN KEY (`PaymentID`) REFERENCES `payment` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `order`
@@ -333,29 +115,8 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (8,6,8,'2022-05-14 15:02:36.461028',0,6),(9,6,9,'2022-05-14 15:03:36.090245',0,7);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `orderitem`
---
-
-DROP TABLE IF EXISTS `orderitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderitem` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Quantity` int DEFAULT NULL,
-  `BookItemID` int DEFAULT NULL,
-  `OrderID` int NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `OrderItem2` (`OrderID`),
-  KEY `OrderItem` (`BookItemID`),
-  CONSTRAINT `OrderItem` FOREIGN KEY (`BookItemID`) REFERENCES `bookitem` (`ID`),
-  CONSTRAINT `OrderItem2` FOREIGN KEY (`OrderID`) REFERENCES `order` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `orderitem`
@@ -363,25 +124,8 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (7,1,9,8),(8,1,9,9);
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `payment`
---
-
-DROP TABLE IF EXISTS `payment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `payment` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Status` int DEFAULT NULL,
-  `Amount` float NOT NULL,
-  `Type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `payment`
@@ -389,27 +133,8 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (6,0,46999,'bank'),(7,0,46999,'cod');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `publisher`
---
-
-DROP TABLE IF EXISTS `publisher`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `publisher` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `BookID` int NOT NULL,
-  `Name` varchar(255) DEFAULT NULL,
-  `Address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FKPublisher931365` (`BookID`),
-  CONSTRAINT `FKPublisher931365` FOREIGN KEY (`BookID`) REFERENCES `book` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `publisher`
@@ -422,45 +147,13 @@ INSERT INTO `publisher` VALUES (1,1,'Nhà Xuất Bản Kim Đồng','Việt Nam'
 UNLOCK TABLES;
 
 --
--- Table structure for table `shipment`
---
-
-DROP TABLE IF EXISTS `shipment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shipment` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Type` varchar(255) DEFAULT NULL,
-  `Cost` float NOT NULL,
-  `ShipUnit` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `shipment`
 --
 
 LOCK TABLES `shipment` WRITE;
 /*!40000 ALTER TABLE `shipment` DISABLE KEYS */;
-INSERT INTO `shipment` VALUES (8,'2',46999,'ghn'),(9,'2',46999,'ghn');
 /*!40000 ALTER TABLE `shipment` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `staff`
---
-
-DROP TABLE IF EXISTS `staff`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `staff` (
-  `Salary` float NOT NULL,
-  `UserID` int NOT NULL,
-  PRIMARY KEY (`UserID`),
-  CONSTRAINT `FKStaff312633` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `staff`
@@ -473,29 +166,12 @@ INSERT INTO `staff` VALUES (10000,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Gender` varchar(255) DEFAULT NULL,
-  `Avatar` varchar(255) DEFAULT NULL,
-  `Phone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `user`
 --
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'nam ','str','09865503','minh123@gmail.com'),(6,'male',NULL,'0916031605','minhthpanda@gmail.com'),(7,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (1,'nam ','str','09865503','minh123@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -508,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-15 13:12:13
+-- Dump completed on 2022-01-02 19:04:02
