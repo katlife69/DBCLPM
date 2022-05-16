@@ -9,7 +9,7 @@
 - JSTL 1.2.1
 - JDK 1.8
 - Apache Tomcat or TomEE
-- -MySql Server
+- MySql 
 
 ### Installing
 
@@ -17,13 +17,13 @@ Step 1: Get the source from git.
 
 Step 2:Add Apche Tomcat Server in Netbean
 
-Step 3:Import mySQL database in file shopbanhang.sql
+Step 3:Import mySQL database in file bt.sql
 
-Step 4:Import data to database Bookstore by import file DataB.sql
+Step 4:Open project with netbean
 
-Step 5:Open project with netbean
+Step 5:Add library JSTL 1.2.1
 
-Step 6:Add libraries mysql-connector-java-8.x.jar
+Step 6:Add library mysql-connector-java-8.x.jar
 
 Step 7:Open folder DBCLPM\src\java\dao\utils\ConDB
 
