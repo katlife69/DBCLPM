@@ -17,7 +17,7 @@ Step 1: Get the source from git.
 
 Step 2:Add Apche Tomcat Server in Netbean
 
-Step 3:Import mySQL database in file bt.sql
+Step 3:Create database bookstore and import database in file bt.sql
 
 Step 4:Open project with netbean
 
